@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" href="data:," />
+    <title>R.M Guardia — IT Specialist · Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f3f3f1;
+        --bg-2: #ececea;
+        --panel: #ffffff;
+        --panel-2: #f8f8f6;
+        --line: #c6c6c0;
+        --line-soft: #dededb;
+        --ink: #1d1d1f;
+        --ink-dim: #55554f;
+        --ink-faint: #8f8f88;
+        --cyan: #e8641c;
+        --amber: #6e6e66;
+        --green: #4a7c59;
+        --radius: 2px;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        line-height: 1.5;
+        overflow-x: hidden;
+      }
+      ::selection { background: var(--cyan); color: #fff; }
+      a { color: var(--cyan); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .wrap { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 22px; }
+
+      /* ---------- top status bar ---------- */
+      .statusbar {
+        position: relative; z-index: 2;
+        display: flex; justify-content: space-between; align-items: center; gap: 12px;
+        padding: 14px 22px; border-bottom: 1px solid var(--line-soft);
+        font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .14em;
+        color: var(--ink-dim); text-transform: uppercase;
+        max-width: 1180px; margin: 0 auto;
+      }
+      .statusbar .dot {
+        display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+        background: var(--green);
+        margin-right: 8px; vertical-align: 1px;
+      }
+      .statusbar nav { display: flex; gap: 20px; }
+      .statusbar nav a { color: var(--ink-dim); }
+      .statusbar nav a:hover { color: var(--cyan); text-decoration: none; }
+      @media (max-width: 640px) { .statusbar nav { display: none; } }
+
+      /* ---------- hero ---------- */
+      .hero { padding: 64px 0 10px; text-align: left; }
+      .hero .coord {
+        font-family: "IBM Plex Mono", monospace; font-size: 12.5px; letter-spacing: .22em;
+        color: var(--cyan); text-transform: uppercase; margin: 0 0 18px;
+      }
+      .hero h1 {
+        font-family: "Archivo", sans-serif; font-weight: 600;
+        font-size: clamp(34px, 7.2vw, 72px); line-height: 1.05; margin: 0;
+        letter-spacing: -0.015em;
+      }
+      .hero h1 .thin { color: var(--ink-dim); }
+      .hero .role {
+        margin: 20px 0 0; font-size: clamp(21px, 3.4vw, 30px); font-weight: 600;
+        letter-spacing: .28em; text-transform: uppercase; color: var(--cyan);
+      }
+      .hero .role .sep { color: var(--amber); }
+      .hero p.lede {
+        max-width: 680px; font-size: 20px; color: var(--ink-dim); margin: 22px 0 0; font-weight: 500;
+      }
+      .hero p.lede strong { color: var(--ink); }
+      .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+      .btn {
+        display: inline-flex; align-items: center; gap: 9px;
+        font-family: "IBM Plex Mono", monospace; font-size: 13.5px; letter-spacing: .1em; text-transform: uppercase;
+        padding: 13px 20px; border: 1px solid var(--line); color: var(--ink);
+        background: var(--panel); cursor: pointer; border-radius: var(--radius);
+        transition: background .2s, border-color .2s, color .2s;
+      }
+      .btn:hover { background: #fff; border-color: var(--ink); color: var(--ink); text-decoration: none; }
+      .btn.primary { background: var(--ink); color: #fff; border-color: var(--ink); font-weight: 500; }
+      .btn.primary:hover { background: #000; color: #fff; border-color: #000; }
+      .btn svg { width: 16px; height: 16px; flex: none; }
+
+      .stat-strip {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+        border-top: 1px solid var(--line);
+        margin: 46px 0 0;
+      }
+      .stat { background: transparent; padding: 18px 20px 2px; border-left: 1px solid var(--line-soft); }
+      .stat:first-child { border-left: none; padding-left: 0; }
+      .stat b {
+        display: block; font-family: "Archivo", sans-serif; font-weight: 600;
+        font-size: clamp(22px, 3.6vw, 32px); color: var(--ink);
+      }
+      .stat b i { font-style: normal; color: var(--cyan); }
+      .stat span {
+        font-family: "IBM Plex Mono", monospace; font-size: 11.5px; letter-spacing: .16em;
+        text-transform: uppercase; color: var(--ink-faint);
+      }
+      @media (max-width: 720px) {
+        .stat-strip { grid-template-columns: repeat(2, 1fr); row-gap: 10px; }
+        .stat:nth-child(odd) { border-left: none; padding-left: 0; }
+      }
+
+      /* ---------- section scaffolding ---------- */
+      section { padding: 74px 0 6px; }
+      .sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }
+      .sec-head .idx {
+        font-family: "IBM Plex Mono", monospace; color: var(--amber); font-size: 13px; letter-spacing: .2em;
+      }
+      .sec-head h2 {
+        font-family: "Archivo", sans-serif; font-weight: 600;
+        font-size: clamp(22px, 4.4vw, 34px); margin: 0; letter-spacing: -0.01em;
+      }
+      .sec-sub { color: var(--ink-dim); max-width: 720px; margin: 6px 0 0; font-size: 18.5px; font-weight: 500; }
+
+      /* ---------- 360 resume piece ---------- */
+      .stage {
+        margin-top: 30px; position: relative;
+        perspective: 1600px; perspective-origin: 50% 42%;
+      }
+      .piece {
+        position: relative; width: min(680px, 100%); margin: 0 auto;
+        aspect-ratio: 1.62; transform-style: preserve-3d;
+        cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none;
+      }
+      .piece:focus-visible { outline: 2px solid var(--cyan); outline-offset: 6px; }
+      .piece.grabbing { cursor: grabbing; }
+      .face {
+        position: absolute; inset: 0; overflow: hidden;
+        backface-visibility: hidden; -webkit-backface-visibility: hidden;
+        background: linear-gradient(155deg, #ffffff, #ececea);
+        border: 1px solid #c2c2bc;
+        border-radius: 2px;
+        box-shadow: 0 16px 34px rgba(30,30,28,.13);
+        padding: clamp(18px, 4vw, 34px);
+        display: flex; flex-direction: column;
+      }
+      .face.back { transform: rotateY(180deg); }
+      .card-top {
+        display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;
+        font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .2em;
+        text-transform: uppercase; color: var(--ink-faint);
+      }
+      .card-top .live { color: var(--green); }
+      .face h3 {
+        font-family: "Archivo", sans-serif; font-weight: 600;
+        font-size: clamp(21px, 4.6vw, 34px); margin: 12px 0 2px; line-height: 1.15;
+      }
+      .face .card-role {
+        color: var(--cyan); font-weight: 700; letter-spacing: .3em; text-transform: uppercase;
+        font-size: clamp(12px, 2.4vw, 15px); margin: 0;
+      }
+      .face .card-summary {
+        color: var(--ink-dim); font-weight: 500; font-size: clamp(13.5px, 2.5vw, 16.5px);
+        margin: 14px 0 0; max-width: 92%;
+      }
+      .card-bottom { margin-top: auto; }
+      .chip-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+      .chip {
+        font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .06em;
+        border: 1px solid var(--line-soft); color: var(--ink-dim); padding: 5px 9px;
+        background: var(--panel);
+      }
+      .chip.hot { color: var(--cyan); border-color: var(--cyan); }
+      .card-contact {
+        display: flex; flex-wrap: wrap; gap: 6px 18px;
+        font-family: "IBM Plex Mono", monospace; font-size: clamp(11px, 2.2vw, 13px); color: var(--ink);
+        border-top: 1px solid var(--line-soft); padding-top: 12px;
+      }
+      .card-contact a { color: var(--ink); }
+      .card-contact a:hover { color: var(--cyan); }
+      /* back face */
+      .back-cols { display: grid; grid-template-columns: 1.25fr 1fr; gap: 22px; margin-top: 12px; min-height: 0; }
+      @media (max-width: 560px) { .back-cols { gap: 14px; } }
+      .back-cols h4 {
+        font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .22em;
+        text-transform: uppercase; color: var(--amber); margin: 0 0 8px; font-weight: 500;
+      }
+      .job { margin-bottom: 12px; }
+      .job b { display: block; font-size: clamp(13.5px, 2.6vw, 16px); line-height: 1.25; }
+      .job span { display: block; color: var(--ink-faint); font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: .05em; margin: 2px 0 4px; }
+      .job p { margin: 0; color: var(--ink-dim); font-size: clamp(12px, 2.3vw, 14px); font-weight: 500; line-height: 1.4; }
+      .skill-list { list-style: none; margin: 0; padding: 0; }
+      .skill-list li {
+        color: var(--ink-dim); font-weight: 600; font-size: clamp(12px, 2.3vw, 14px);
+        padding: 3.5px 0; border-bottom: 1px solid var(--line-soft);
+        display: flex; justify-content: space-between; gap: 8px;
+      }
+      .skill-list li i { font-style: normal; color: var(--cyan); font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .08em; }
+      .edu-line { margin-top: 12px; color: var(--ink-dim); font-size: clamp(12px, 2.3vw, 13.5px); font-weight: 500; }
+      .edu-line b { color: var(--ink); }
+
+      .piece-controls {
+        display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 26px;
+      }
+      .piece-controls .hint {
+        font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .14em;
+        text-transform: uppercase; color: var(--ink-faint); width: 100%; text-align: center; margin: 0 0 2px;
+      }
+      .piece-controls .hint b { color: var(--cyan); font-weight: 500; }
+      .mini-btn {
+        font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+        background: transparent; color: var(--ink-dim); border: 1px solid var(--line-soft);
+        padding: 10px 16px; cursor: pointer;
+      }
+      .mini-btn:hover { color: var(--ink); border-color: var(--ink); }
+      .angle-readout {
+        font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--ink-faint);
+        min-width: 86px; text-align: center;
+      }
+      .angle-readout b { color: var(--amber); font-weight: 500; }
+    </style>
+  </head>
+  <body>
+    <div class="statusbar">
+      <span><span class="dot"></span>Open to IT / Networking roles — Chicago, IL</span>
+      <nav>
+        <a href="#resume360">Resume 360°</a>
+        <a href="#projects">Projects</a>
+        <a href="#quantum">Quantum</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <span>41.8781° N · 87.6298° W</span>
+    </div>
+
+    <div class="wrap">
+      <header class="hero">
+        <div class="hero-grid">
+          <div class="hero-main">
+            <p class="coord">Portfolio — 2026</p>
+            <h1>R.M Guardia<br /><span class="thin">(Martin Guardia)</span></h1>
+            <p class="role">IT Specialist <span class="sep">/</span> Chicago</p>
+          </div>
+          <div class="sat-wrap">
+            <div class="sat-stage" id="satStage" tabindex="0" role="img" aria-label="Interactive 3D model of an orbital satellite with solar panel wings and a dish antenna. Drag in any direction to rotate it, or focus it and use the arrow keys.">
+              <div class="sat-shadow" aria-hidden="true"></div>
+              <div class="sat" id="sat" aria-hidden="true"></div>
+            </div>
+            <div class="sat-meta">
+              <span>Orbital unit — drag to rotate</span>
+              <span>ROT <b id="satAngle">000°</b></span>
+            </div>
+          </div>
+        </div>
+        <p class="lede">
+          The primary technical resource for distributed teams — administering
+          <strong>Microsoft 365, Entra ID and Active Directory</strong> end to end, with a networking
+          foundation built on <strong>WireGuard VPN, DNS/DHCP, firewalls and Intune</strong> endpoint
+          management. Bilingual English / Spanish.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="https://github.com/polybian" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            github.com/polybian
+          </a>
+          <a class="btn" href="mailto:martinguardia@protonmail.com">martinguardia@protonmail.com</a>
+          <a class="btn" href="#resume360">View the 360° resume ↓</a>
+        </div>
+        <div class="stat-strip">
+          <div class="stat"><b>3<i>+</i></b><span>Years as primary IT resource</span></div>
+          <div class="stat"><b>20</b><span>Public repositories</span></div>
+          <div class="stat"><b>14 <i>+</i> 6</b><span>IT infra · Quantum hobby</span></div>
+          <div class="stat"><b>EN <i>/</i> ES</b><span>Native bilingual</span></div>
+        </div>
+      </header>
+
+    <style>
+      /* ---------- slab thickness (3D solid piece) ---------- */
+      .piece { --t: 26px; }
+      .face.front { transform: translateZ(calc(var(--t) / 2)); }
+      .face.back  { transform: rotateY(180deg) translateZ(calc(var(--t) / 2)); }
+      .edge {
+        position: absolute; pointer-events: none;
+        background: #c4c4bd;
+        border: 1px solid #a6a6a0;
+      }
+      .edge.r { top: 0; height: 100%; width: var(--t); left: calc(100% - var(--t) / 2); transform: rotateY(90deg); }
+      .edge.l { top: 0; height: 100%; width: var(--t); left: calc(var(--t) / -2); transform: rotateY(-90deg); }
+      .edge.t { left: 0; width: 100%; height: var(--t); top: calc(var(--t) / -2); transform: rotateX(90deg); }
+      .edge.b { left: 0; width: 100%; height: var(--t); top: calc(100% - var(--t) / 2); transform: rotateX(-90deg); }
+      @media (max-width: 640px) {
+        .piece { aspect-ratio: 0.74; }
+        .face { padding: 16px; }
+        .job { margin-bottom: 9px; }
+        .job p { line-height: 1.35; }
+        .card-contact { gap: 4px 12px; padding-top: 9px; }
+      }
+      .face .mini-head {
+        font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .24em;
+        text-transform: uppercase; color: var(--amber); margin: 10px 0 4px;
+        display: flex; justify-content: space-between; gap: 10px;
+      }
+      .face .mini-head span:last-child { color: var(--ink-faint); letter-spacing: .1em; }
+      .proj-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px; margin-top: 8px; }
+      @media (max-width: 560px) { .proj-mini { gap: 3px 12px; } }
+      .proj-mini div { border-bottom: 1px solid var(--line-soft); padding: 5px 0; }
+      .proj-mini b { display: block; font-size: clamp(12.5px, 2.4vw, 15px); line-height: 1.2; }
+      .proj-mini b a { color: var(--ink); }
+      .proj-mini b a:hover { color: var(--cyan); }
+      .proj-mini span { display: block; color: var(--ink-dim); font-size: clamp(11px, 2.1vw, 12.5px); font-weight: 500; line-height: 1.3; }
+      .back-foot {
+        margin-top: auto; border-top: 1px solid var(--line-soft); padding-top: 10px;
+        font-family: "IBM Plex Mono", monospace; font-size: clamp(10.5px, 2vw, 12.5px); color: var(--ink-dim);
+        display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+      }
+
+      /* ---------- hero grid + interactive satellite ---------- */
+      .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 28px; align-items: center; }
+      @media (max-width: 900px) {
+        .hero-grid { grid-template-columns: 1fr; gap: 4px; }
+        .sat-wrap { order: -1; }
+      }
+      .sat-wrap { min-width: 0; }
+      .sat-stage {
+        position: relative; height: 300px;
+        perspective: 1200px; perspective-origin: 50% 45%;
+        cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none;
+      }
+      .sat-stage.grabbing { cursor: grabbing; }
+      .sat-stage:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+      @media (max-width: 900px) { .sat-stage { height: 248px; } }
+      .sat-shadow {
+        position: absolute; left: 50%; bottom: 14px; width: 190px; height: 20px;
+        transform: translateX(-50%); border-radius: 50%;
+        background: rgba(30,30,28,.16); filter: blur(7px); pointer-events: none;
+      }
+      .sat { position: absolute; left: 50%; top: 48%; width: 0; height: 0; transform-style: preserve-3d; }
+      .bx { position: absolute; transform-style: preserve-3d; }
+      .bxf { position: absolute; left: 50%; top: 50%; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+      .sat-bus .bxf { background: #e9e9e4; border: 1px solid #b9b9b2; }
+      .sat-panel .bxf {
+        background-color: #31404d;
+        background-image:
+          linear-gradient(90deg, rgba(255,255,255,.13) 1px, transparent 1px),
+          linear-gradient(rgba(255,255,255,.13) 1px, transparent 1px);
+        background-size: 25px 21px;
+        border: 1px solid #222b33;
+      }
+      .sat-strut .bxf { background: #c9c9c2; border: 1px solid #a6a6a0; }
+      .sat-dark .bxf { background: #4c4c46; border: 1px solid #33332f; }
+      .bus-tag {
+        position: absolute; left: 10px; bottom: 9px;
+        font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .18em; color: var(--ink-faint);
+      }
+      .bus-port { position: absolute; right: 10px; top: 10px; width: 12px; height: 12px; background: var(--cyan); }
+      .dish {
+        position: absolute; left: 50%; top: 50%; width: 96px; height: 96px; border-radius: 50%;
+        background: radial-gradient(circle at 38% 34%, #ffffff, #dededa 58%, #b4b4ac);
+        border: 1px solid #a6a6a0;
+        transform: translate(-50%,-50%) translateY(-122px) rotateX(57deg);
+      }
+      .orb { position: absolute; left: 50%; top: 50%; border-radius: 50%; background: var(--cyan); }
+      .sat-meta {
+        display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 2px;
+        font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .14em;
+        text-transform: uppercase; color: var(--ink-faint);
+      }
+      .sat-meta b { color: var(--amber); font-weight: 500; }
+
+      /* ---------- project grid ---------- */
+      .proj-grid {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 30px;
+      }
+      @media (max-width: 980px) { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 620px) { .proj-grid { grid-template-columns: 1fr; } }
+      .proj-card {
+        position: relative; display: block; padding: 20px 20px 16px;
+        background: var(--panel);
+        border: 1px solid var(--line-soft); color: var(--ink);
+        transition: border-color .2s, box-shadow .2s;
+      }
+      .proj-card:hover {
+        border-color: var(--ink); text-decoration: none;
+      }
+      .proj-card .p-idx {
+        font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--ink-faint); letter-spacing: .14em;
+      }
+      .proj-card h3 { margin: 8px 0 6px; font-size: 21px; font-weight: 700; line-height: 1.15; }
+      .proj-card p { margin: 0 0 14px; color: var(--ink-dim); font-size: 15.5px; font-weight: 500; line-height: 1.45; }
+      .proj-card .p-meta {
+        display: flex; justify-content: space-between; align-items: center;
+        font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+      }
+      .proj-card .lang { color: var(--amber); }
+      .proj-card .open { color: var(--cyan); }
+      .quantum-band {
+        margin-top: 30px; border: 1px solid var(--line-soft);
+        background: transparent;
+        padding: 6px 22px 22px;
+      }
+      .quantum-band .proj-card { background: var(--panel); }
+
+      /* ---------- skills ---------- */
+      .skill-groups { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 30px; }
+      @media (max-width: 720px) { .skill-groups { grid-template-columns: 1fr; } }
+      .skill-group { border: 1px solid var(--line-soft); background: transparent; padding: 20px 22px; }
+      .skill-group h3 {
+        margin: 0 0 12px; font-family: "IBM Plex Mono", monospace; font-weight: 500;
+        font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--cyan);
+      }
+      .tag-row { display: flex; flex-wrap: wrap; gap: 7px; }
+      .tag {
+        font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--ink);
+        border: 1px solid var(--line-soft); padding: 6px 10px; background: var(--panel);
+      }
+
+      /* ---------- contact / footer ---------- */
+      .contact-panel {
+        margin-top: 30px; border: 1px solid var(--line);
+        background: var(--panel);
+        padding: clamp(22px, 4vw, 40px); position: relative; overflow: hidden;
+      }
+      .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 30px; margin-top: 18px; }
+      @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } }
+      .contact-item span {
+        display: block; font-family: "IBM Plex Mono", monospace; font-size: 11px;
+        letter-spacing: .22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px;
+      }
+      .contact-item a, .contact-item b { font-size: 20px; font-weight: 600; color: var(--ink); }
+      .contact-item a:hover { color: var(--cyan); }
+      footer {
+        margin-top: 84px; border-top: 1px solid var(--line-soft); padding: 26px 0 40px;
+        display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+        font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .12em;
+        text-transform: uppercase; color: var(--ink-faint);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .statusbar .dot { animation: none; }
+      }
+    </style>
+
+      <!-- ============ 360 RESUME SLAB ============ -->
+      <section id="resume360">
+        <div class="sec-head">
+          <span class="idx">01</span>
+          <h2>The Resume — a 360° piece</h2>
+        </div>
+        <p class="sec-sub">
+          One solid slab, two faces. <strong style="color:var(--ink)">Front: work experience.</strong>
+          <strong style="color:var(--ink)">Back: the projects.</strong>
+          Grab it with your finger — or your mouse — and turn it all the way around.
+        </p>
+
+        <div class="stage">
+          <div class="piece" id="piece" tabindex="0" role="img" aria-label="Rotatable 3D resume card. Front face: work experience at Kime Capital and Marubeni. Back face: featured GitHub projects. Drag in any direction to rotate it, double-tap to flip it, or focus it and use the arrow keys.">
+            <!-- FRONT · EXPERIENCE -->
+            <div class="face front">
+              <div class="card-top">
+                <span>R.M Guardia — Resume · Face A</span>
+                <span class="live">● Experience</span>
+              </div>
+              <div class="mini-head"><span>Work Experience</span><span>2024 — Present</span></div>
+              <div class="job">
+                <b>Bilingual IT Specialist — Kime Capital SL</b>
+                <span>REMOTE · SPAIN-BASED FINANCIAL FIRM · MAR 2024 — PRESENT</span>
+                <p>Sole IT resource for a distributed workforce across a 7-hour timezone gap — owns every ticket end to end: WireGuard VPN, firewall &amp; DNS, the full Microsoft 365 / Entra ID tenant, MFA, Intune endpoint lifecycle, onboarding/offboarding. Led the Jira → Zendesk migration.</p>
+              </div>
+              <div class="job">
+                <b>IT Inventory Specialist — Marubeni Corporation (TPH)</b>
+                <span>MIAMI, FL · ON-SITE · FEB 2025 — AUG 2025</span>
+                <p>Front-line support across warehouse and office: workstations, network connectivity, Zebra scanners/printers, NetSuite ERP users, and asset inventory auditing that cut record discrepancies.</p>
+              </div>
+              <div class="card-bottom">
+                <div class="card-contact">
+                  <span>Chicago, IL</span>
+                  <a href="mailto:martinguardia@protonmail.com">martinguardia@protonmail.com</a>
+                  <a href="https://github.com/polybian" target="_blank" rel="noopener">github.com/polybian</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- BACK · PROJECTS -->
+            <div class="face back">
+              <div class="card-top">
+                <span>R.M Guardia — Resume · Face B</span>
+                <span class="live">● Projects</span>
+              </div>
+              <div class="mini-head"><span>Featured Projects</span><span>github.com/polybian</span></div>
+              <div class="proj-mini">
+                <div>
+                  <b><a href="https://github.com/polybian/wireguard-vpn-implementation" target="_blank" rel="noopener">WireGuard VPN</a></b>
+                  <span>VPN deployment with firewall rules &amp; DNS for remote teams.</span>
+                </div>
+                <div>
+                  <b><a href="https://github.com/polybian/entra-id-lifecycle-implementation" target="_blank" rel="noopener">Entra ID Lifecycle</a></b>
+                  <span>User lifecycle, group management &amp; MFA enforcement.</span>
+                </div>
+                <div>
+                  <b><a href="https://github.com/polybian/intune-endpoint-implementation" target="_blank" rel="noopener">Intune Endpoints</a></b>
+                  <span>Enrollment, config profiles, imaging &amp; deployment.</span>
+                </div>
+                <div>
+                  <b><a href="https://github.com/polybian/wazuh-soc-implementation" target="_blank" rel="noopener">Wazuh SIEM</a></b>
+                  <span>Four custom detection rules + incident walkthroughs.</span>
+                </div>
+                <div>
+                  <b><a href="https://github.com/polybian/terraform-ansible-implementation" target="_blank" rel="noopener">Terraform + Ansible</a></b>
+                  <span>Infrastructure as Code, validated end to end.</span>
+                </div>
+                <div>
+                  <b><a href="https://github.com/polybian/python-port-scanner" target="_blank" rel="noopener">Python Port Scanner</a></b>
+                  <span>CIDR scans, service fingerprinting — 34/34 tests.</span>
+                </div>
+              </div>
+              <div class="back-foot">
+                <span>+ 8 more infrastructure builds</span>
+                <span>+ 6 quantum computing projects ↓</span>
+              </div>
+            </div>
+
+            <!-- SLAB EDGES -->
+            <div class="edge r" aria-hidden="true"></div>
+            <div class="edge l" aria-hidden="true"></div>
+            <div class="edge t" aria-hidden="true"></div>
+            <div class="edge b" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="piece-controls">
+          <p class="hint"><b>Drag in any direction</b> to rotate · double-tap to flip it over</p>
+          <button class="mini-btn" id="btnFront" type="button">Face A · Experience</button>
+          <span class="angle-readout">ROT <b id="angleOut">000°</b></span>
+          <button class="mini-btn" id="btnBack" type="button">Face B · Projects</button>
+          <button class="mini-btn" id="btnTiltUp" type="button">Tilt up</button>
+          <button class="mini-btn" id="btnTiltDown" type="button">Tilt down</button>
+          <button class="mini-btn" id="btnResume" type="button">Download résumé (.txt)</button>
+        </div>
+      </section>
+
+      <!-- ============ IT PROJECTS ============ -->
+      <section id="projects">
+        <div class="sec-head">
+          <span class="idx">02</span>
+          <h2>Infrastructure Projects</h2>
+        </div>
+        <p class="sec-sub">
+          Fourteen hands-on implementations mirroring production work administered at Kime Capital and
+          Marubeni — each documented with architecture notes and runbooks. Names, hosts, IPs and
+          credentials sanitized.
+        </p>
+        <div class="proj-grid" id="itGrid"></div>
+      </section>
+
+      <!-- ============ QUANTUM ============ -->
+      <section id="quantum">
+        <div class="sec-head">
+          <span class="idx">03</span>
+          <h2>Quantum Computing</h2>
+        </div>
+        <p class="sec-sub">
+          Six Qiskit implementations, each validated on simulators — the visible part of a much
+          longer obsession. Quantum machines have pulled at me since childhood, long before I
+          could say why. What I'm building toward stays off the page, for now.
+        </p>
+        <div class="quantum-band">
+          <div class="proj-grid" id="qGrid" style="margin-top:22px"></div>
+        </div>
+      </section>
+
+      <!-- ============ SKILLS ============ -->
+      <section id="skills">
+        <div class="sec-head">
+          <span class="idx">04</span>
+          <h2>Technical Skills</h2>
+        </div>
+        <div class="skill-groups">
+          <div class="skill-group">
+            <h3>Networking</h3>
+            <div class="tag-row">
+              <span class="tag">DNS</span><span class="tag">DHCP</span><span class="tag">WireGuard VPN</span>
+              <span class="tag">Firewall rules</span><span class="tag">Cisco Meraki</span>
+              <span class="tag">Graylog</span><span class="tag">Remote diagnostics</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Identity &amp; Directory</h3>
+            <div class="tag-row">
+              <span class="tag">Entra ID</span><span class="tag">Active Directory</span>
+              <span class="tag">User lifecycle</span><span class="tag">MFA</span>
+              <span class="tag">Conditional Access</span><span class="tag">PowerShell</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Microsoft 365 &amp; Endpoints</h3>
+            <div class="tag-row">
+              <span class="tag">Exchange Online</span><span class="tag">Teams</span><span class="tag">SharePoint</span>
+              <span class="tag">Intune</span><span class="tag">Windows 10/11</span>
+              <span class="tag">Imaging &amp; deployment</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Cloud, IaC &amp; ITSM</h3>
+            <div class="tag-row">
+              <span class="tag">Azure</span><span class="tag">Terraform</span><span class="tag">Ansible</span>
+              <span class="tag">Docker</span><span class="tag">Zendesk</span><span class="tag">Jira Service Mgmt</span>
+              <span class="tag">Snipe-IT</span><span class="tag">NetSuite</span><span class="tag">Wazuh</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CONTACT ============ -->
+      <section id="contact">
+        <div class="sec-head">
+          <span class="idx">05</span>
+          <h2>Contact</h2>
+        </div>
+        <div class="contact-panel">
+          <p style="margin:0;font-size:20px;font-weight:500;color:var(--ink-dim);max-width:640px">
+            Looking for an IT Specialist who can own the whole stack — network, identity, endpoints,
+            tickets — in English or Spanish? Let's talk.
+          </p>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <span>Email</span>
+              <a href="mailto:martinguardia@protonmail.com">martinguardia@protonmail.com</a>
+            </div>
+            <div class="contact-item">
+              <span>Phone</span>
+              <a href="tel:+18174589311">817-458-9311</a>
+            </div>
+            <div class="contact-item">
+              <span>GitHub</span>
+              <a href="https://github.com/polybian" target="_blank" rel="noopener">github.com/polybian</a>
+            </div>
+            <div class="contact-item">
+              <span>Base</span>
+              <b>Chicago, IL · EN / ES</b>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <span>© 2026 R.M Guardia (Martin Guardia)</span>
+        <span>Designed &amp; built as a single page · Chicago, IL</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+        var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        /* ---------- project data (github.com/polybian) ---------- */
+        var IT = [
+          ["WireGuard VPN", "wireguard-vpn-implementation", "Shell", "Remote-access VPN deployment with firewall rules and split DNS — the backbone of a fully distributed team."],
+          ["Entra ID Lifecycle", "entra-id-lifecycle-implementation", "PowerShell", "User lifecycle automation in Entra ID: joiner / mover / leaver flows, group management and MFA enforcement."],
+          ["Intune Endpoint", "intune-endpoint-implementation", "", "Full endpoint lifecycle in Microsoft Intune: enrollment, configuration profiles, imaging and deployment."],
+          ["Active Directory Automation", "ad-powershell-automation", "PowerShell", "AD automation with PowerShell: domain health checks, drift detection and HTML reporting."],
+          ["Wazuh SIEM", "wazuh-soc-implementation", "Shell", "Wazuh deployment with four custom detection rules and tabletop incident walkthroughs."],
+          ["ITSM Knowledge Base", "itsm-kb-implementation", "", "Ticket taxonomy, workflows and a self-service knowledge base modeled on a Jira → Zendesk migration."],
+          ["Snipe-IT Assets", "snipe-it-asset-implementation", "", "Asset inventory implementation: check-in/out flows, audits and lifecycle tracking in Snipe-IT."],
+          ["Graylog Pipeline", "graylog-log-implementation", "Python", "Centralized log ingestion and analysis with Graylog: inputs, extractors, dashboards and alerts."],
+          ["Network Infrastructure", "homelab-network-implementation", "Python", "Segmented network build: VLANs, inter-VLAN firewall rules, local DNS and DHCP reservations."],
+          ["Azure Hybrid Network", "azure-hybrid-network", "Bicep", "Hub-and-spoke Azure networking with VPN gateway connectivity, declared in Bicep."],
+          ["Azure Administration", "azure-admin-implementation", "PowerShell", "Azure administration with Conditional Access, Privileged Identity Management and Key Vault."],
+          ["Docker for IT Ops", "docker-containers-implementation", "Python", "Containerized IT tooling: real Dockerfiles and multi-service compose stacks for support workloads."],
+          ["Terraform + Ansible", "terraform-ansible-implementation", "HCL", "End-to-end infrastructure as code: Terraform provisions, Ansible configures — validated end to end."],
+          ["Python Port Scanner", "python-port-scanner", "Python", "Concurrent TCP port scanner with CIDR support, service fingerprinting and HTML reports — 34/34 tests passing."]
+        ];
+        var QUANTUM = [
+          ["Quantum Circuits", "quantum-circuits-implementation", "Qiskit", "Bell states, teleportation, Grover search and Deutsch–Jozsa — validated on the Aer simulator."],
+          ["BB84 QKD", "bb84-qkd-implementation", "Qiskit", "Quantum key distribution with eavesdropper detection and error-rate thresholds."],
+          ["Shor's Algorithm", "shor-factoring", "Qiskit", "Shor's factoring algorithm implemented from scratch."],
+          ["VQE · H₂ Molecule", "vqe-h2-implementation", "Qiskit", "Variational quantum eigensolver estimating the H₂ ground-state energy."],
+          ["Quantum Noise Analysis", "quantum-noise-analysis", "Qiskit", "How depolarizing and thermal noise degrade circuit fidelity."],
+          ["Oracle Algorithms", "oracle-algorithms", "Qiskit", "Oracle algorithms in depth: Deutsch–Jozsa and Bernstein–Vazirani."]
+        ];
+
+        function card(item, idx) {
+          var a = document.createElement("a");
+          a.className = "proj-card";
+          a.href = "https://github.com/polybian/" + item[1];
+          a.target = "_blank"; a.rel = "noopener";
+          var n = ("0" + (idx + 1)).slice(-2);
+          a.innerHTML =
+            '<span class="p-idx">PRJ-' + n + "</span>" +
+            "<h3></h3><p></p>" +
+            '<div class="p-meta"><span class="lang"></span><span class="open">Open repo ↗</span></div>';
+          a.querySelector("h3").textContent = item[0];
+          a.querySelector("p").textContent = item[3];
+          a.querySelector(".lang").textContent = item[2] ? "◈ " + item[2] : "◈ Docs / Config";
+          return a;
+        }
+        var itGrid = document.getElementById("itGrid");
+        var qGrid = document.getElementById("qGrid");
+        IT.forEach(function (it, i) { itGrid.appendChild(card(it, i)); });
+        QUANTUM.forEach(function (it, i) { qGrid.appendChild(card(it, i)); });
+
+        /* ---------- 360° slab physics ---------- */
+        var piece = document.getElementById("piece");
+        var angleOut = document.getElementById("angleOut");
+        var ry = -18, rx = 6;              /* current rotation */
+        var vy = 0, vx = 0;                /* velocity */
+        var dragging = false, lastX = 0, lastY = 0, lastT = 0;
+        var lastInteract = performance.now();
+        var targetY = null;                /* flip animation target */
+        var targetX = null;                /* tilt animation target */
+        var idleSpin = !reduceMotion;
+
+        function nearestEquivalent(target, current) {
+          var base = Math.round((current - target) / 360) * 360 + target;
+          return base;
+        }
+        function flipTo(target) {
+          targetY = nearestEquivalent(target, ry);
+          vy = 0; vx = 0;
+          lastInteract = performance.now();
+        }
+        function tiltBy(d) {
+          var base = targetX !== null ? targetX : rx;
+          targetX = Math.max(-70, Math.min(70, base + d));
+          vy = 0; vx = 0;
+          lastInteract = performance.now();
+        }
+        function flipOver() {
+          var norm = ((ry % 360) + 360) % 360;
+          flipTo(norm > 90 && norm < 270 ? 0 : 180);
+        }
+        document.getElementById("btnFront").addEventListener("click", function () { targetX = null; flipTo(0); });
+        document.getElementById("btnBack").addEventListener("click", function () { targetX = null; flipTo(180); });
+        document.getElementById("btnTiltUp").addEventListener("click", function () { tiltBy(42); });
+        document.getElementById("btnTiltDown").addEventListener("click", function () { tiltBy(-42); });
+        piece.addEventListener("dblclick", function (e) {
+          if (e.target.closest && e.target.closest("a")) return;
+          flipOver();
+        });
+        piece.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowLeft") { targetY = null; targetX = null; vy = -6; lastInteract = performance.now(); e.preventDefault(); }
+          else if (e.key === "ArrowRight") { targetY = null; targetX = null; vy = 6; lastInteract = performance.now(); e.preventDefault(); }
+          else if (e.key === "ArrowUp") { tiltBy(24); e.preventDefault(); }
+          else if (e.key === "ArrowDown") { tiltBy(-24); e.preventDefault(); }
+          else if (e.key === " " || e.key === "Enter") { flipOver(); e.preventDefault(); }
+        });
+
+        piece.addEventListener("pointerdown", function (e) {
+          if (e.target.closest && e.target.closest("a")) return; /* let face links stay tappable */
+          dragging = true; targetY = null; targetX = null;
+          piece.classList.add("grabbing");
+          piece.setPointerCapture(e.pointerId);
+          lastX = e.clientX; lastY = e.clientY; lastT = performance.now();
+          vx = 0; vy = 0; lastInteract = performance.now();
+        });
+        piece.addEventListener("pointermove", function (e) {
+          if (!dragging) return;
+          var now = performance.now();
+          var dt = Math.max(now - lastT, 1);
+          var dx = e.clientX - lastX, dy = e.clientY - lastY;
+          ry += dx * 0.45;
+          rx -= dy * 0.45;
+          rx = Math.max(-70, Math.min(70, rx));
+          vy = (dx * 0.45) / dt * 16.7;
+          vx = (-dy * 0.45) / dt * 16.7;
+          lastX = e.clientX; lastY = e.clientY; lastT = now;
+          lastInteract = now;
+        });
+        function endDrag() {
+          if (!dragging) return;
+          dragging = false;
+          piece.classList.remove("grabbing");
+          lastInteract = performance.now();
+        }
+        piece.addEventListener("pointerup", endDrag);
+        piece.addEventListener("pointercancel", endDrag);
+        /* taps on links inside the slab shouldn't spin it away */
+        piece.addEventListener("click", function (e) {
+          if (Math.abs(vy) > 1.2 || Math.abs(vx) > 1.2) { e.preventDefault(); e.stopPropagation(); }
+        }, true);
+
+        function tick() {
+          var now = performance.now();
+          if (!dragging) {
+            if (targetY !== null || targetX !== null) {
+              if (targetY !== null) {
+                var diff = targetY - ry;
+                ry += diff * 0.09;
+                if (Math.abs(diff) < 0.15) { ry = targetY; targetY = null; }
+              }
+              var restX = targetX !== null ? targetX : 6;
+              rx += (restX - rx) * 0.09;
+              if (targetX !== null && Math.abs(restX - rx) < 0.2) targetX = null;
+            } else {
+              ry += vy; rx += vx;
+              vy *= 0.955; vx *= 0.955;
+              if (now - lastInteract > 1200) rx += (6 - rx) * 0.01;  /* settle back, gently and late */
+              rx = Math.max(-75, Math.min(75, rx));
+              if (idleSpin && Math.abs(vy) < 0.02 && now - lastInteract > 3500) {
+                ry += 0.22;                          /* slow showroom spin */
+              }
+            }
+          }
+          piece.style.transform = "rotateX(" + rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg)";
+          var norm = ((ry % 360) + 360) % 360;
+          var txt = ("00" + Math.round(norm)).slice(-3) + "°";
+          if (angleOut.textContent !== txt) angleOut.textContent = txt;
+          requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+
+        /* ---------- interactive satellite (hero) ---------- */
+        var satStage = document.getElementById("satStage");
+        var sat = document.getElementById("sat");
+        var satAngle = document.getElementById("satAngle");
+
+        function makeBox(w, h, d, cls, x, y) {
+          var el = document.createElement("div");
+          el.className = "bx " + cls;
+          el.style.width = w + "px"; el.style.height = h + "px";
+          el.style.transform = "translate(-50%,-50%) translate3d(" + x + "px," + y + "px,0px)";
+          function face(fw, fh, t) {
+            var f = document.createElement("div");
+            f.className = "bxf";
+            f.style.width = fw + "px"; f.style.height = fh + "px";
+            f.style.transform = "translate(-50%,-50%) " + t;
+            el.appendChild(f);
+            return f;
+          }
+          var faces = {
+            front:  face(w, h, "translateZ(" + (d / 2) + "px)"),
+            back:   face(w, h, "rotateY(180deg) translateZ(" + (d / 2) + "px)"),
+            right:  face(d, h, "rotateY(90deg) translateZ(" + (w / 2) + "px)"),
+            left:   face(d, h, "rotateY(-90deg) translateZ(" + (w / 2) + "px)"),
+            top:    face(w, d, "rotateX(90deg) translateZ(" + (h / 2) + "px)"),
+            bottom: face(w, d, "rotateX(-90deg) translateZ(" + (h / 2) + "px)")
+          };
+          sat.appendChild(el);
+          return { el: el, faces: faces };
+        }
+        var bus = makeBox(96, 96, 96, "sat-bus", 0, 0);
+        var busTag = document.createElement("div");
+        busTag.className = "bus-tag"; busTag.textContent = "SAT-01";
+        bus.faces.front.appendChild(busTag);
+        var busPort = document.createElement("div");
+        busPort.className = "bus-port";
+        bus.faces.front.appendChild(busPort);
+        makeBox(22, 12, 12, "sat-strut", 59, 0);
+        makeBox(22, 12, 12, "sat-strut", -59, 0);
+        makeBox(150, 64, 6, "sat-panel", 145, 0);
+        makeBox(150, 64, 6, "sat-panel", -145, 0);
+        makeBox(10, 46, 10, "sat-strut", 0, -71);
+        makeBox(4, 58, 4, "sat-dark", 0, 77);
+        var dish = document.createElement("div");
+        dish.className = "dish";
+        sat.appendChild(dish);
+        function orb(size, x, y, z) {
+          var o = document.createElement("div");
+          o.className = "orb";
+          o.style.width = size + "px"; o.style.height = size + "px";
+          o.style.transform = "translate(-50%,-50%) translate3d(" + x + "px," + y + "px," + z + "px)";
+          sat.appendChild(o);
+        }
+        orb(13, 0, -104, 26);   /* dish feed */
+        orb(10, 0, 112, 0);     /* antenna tip */
+        orb(9, 40, -56, 40);    /* beacon */
+
+        var sry = -26, srx = -12, svy = 0, svx = 0;
+        var sDragging = false, sLastX = 0, sLastY = 0, sLastT = 0;
+        var sLastInteract = performance.now();
+        var satScale = 1;
+        function fitSat() { satScale = Math.max(0.5, Math.min(1, (satStage.clientWidth - 8) / 452)); }
+        fitSat();
+        window.addEventListener("resize", fitSat);
+
+        satStage.addEventListener("pointerdown", function (e) {
+          sDragging = true;
+          satStage.classList.add("grabbing");
+          satStage.setPointerCapture(e.pointerId);
+          sLastX = e.clientX; sLastY = e.clientY; sLastT = performance.now();
+          svx = 0; svy = 0; sLastInteract = performance.now();
+        });
+        satStage.addEventListener("pointermove", function (e) {
+          if (!sDragging) return;
+          var now = performance.now();
+          var dt = Math.max(now - sLastT, 1);
+          var dx = e.clientX - sLastX, dy = e.clientY - sLastY;
+          sry += dx * 0.5;
+          srx -= dy * 0.5;
+          srx = Math.max(-70, Math.min(70, srx));
+          svy = (dx * 0.5) / dt * 16.7;
+          svx = (-dy * 0.5) / dt * 16.7;
+          sLastX = e.clientX; sLastY = e.clientY; sLastT = now;
+          sLastInteract = now;
+        });
+        function sEndDrag() {
+          if (!sDragging) return;
+          sDragging = false;
+          satStage.classList.remove("grabbing");
+          sLastInteract = performance.now();
+        }
+        satStage.addEventListener("pointerup", sEndDrag);
+        satStage.addEventListener("pointercancel", sEndDrag);
+        satStage.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowLeft") { svy = -5; sLastInteract = performance.now(); e.preventDefault(); }
+          else if (e.key === "ArrowRight") { svy = 5; sLastInteract = performance.now(); e.preventDefault(); }
+          else if (e.key === "ArrowUp") { svx = 5; sLastInteract = performance.now(); e.preventDefault(); }
+          else if (e.key === "ArrowDown") { svx = -5; sLastInteract = performance.now(); e.preventDefault(); }
+        });
+
+        function satTick() {
+          var now = performance.now();
+          if (!sDragging) {
+            sry += svy; srx += svx;
+            svy *= 0.955; svx *= 0.955;
+            srx = Math.max(-75, Math.min(75, srx));
+            if (!reduceMotion && Math.abs(svy) < 0.02 && now - sLastInteract > 3500) {
+              sry += 0.3;   /* slow showroom drift */
+            }
+          }
+          sat.style.transform = "rotateX(" + srx.toFixed(2) + "deg) rotateY(" + sry.toFixed(2) + "deg) scale(" + satScale.toFixed(3) + ")";
+          var snorm = ((sry % 360) + 360) % 360;
+          var stxt = ("00" + Math.round(snorm)).slice(-3) + "°";
+          if (satAngle.textContent !== stxt) satAngle.textContent = stxt;
+          requestAnimationFrame(satTick);
+        }
+        requestAnimationFrame(satTick);
+
+        /* ---------- résumé download (real content, generated in-page) ---------- */
+        var RESUME_TXT = [
+          "R.M GUARDIA (MARTIN GUARDIA)",
+          "IT Specialist - Chicago, IL",
+          "817-458-9311 - martinguardia@protonmail.com - github.com/polybian - Bilingual English / Spanish",
+          "",
+          "SUMMARY",
+          "IT Specialist with 3+ years as the primary technical resource for distributed teams,",
+          "administering Microsoft 365, Entra ID, and Active Directory environments end to end.",
+          "Strong networking and systems foundation: DNS and DHCP administration, WireGuard VPN",
+          "deployment, firewall rule management, Cisco Meraki, and remote diagnostics down to the",
+          "network layer. Proven endpoint management through Intune across the full device lifecycle.",
+          "",
+          "EXPERIENCE",
+          "",
+          "Bilingual IT Specialist - Kime Capital SL - Remote (Spain-based financial firm)",
+          "Mar 2024 - Present",
+          "- Sole IT resource for a distributed workforce, owning every ticket from intake to",
+          "  resolution across hardware, software, networking, and M365 - across a 7-hour timezone gap.",
+          "- Deploy and maintain WireGuard VPN, firewall rules, and DNS for remote users; diagnose",
+          "  connectivity issues to the network layer without physical access to endpoints.",
+          "- Administer the Microsoft 365 tenant end to end: Exchange Online, Teams, SharePoint,",
+          "  Entra ID user lifecycle, group membership and permissions, and MFA enforcement.",
+          "- Own all onboarding and offboarding - account provisioning, access rights, device",
+          "  assignment, and secure deprovisioning.",
+          "- Own full endpoint lifecycle: Intune enrollment and configuration profiles, imaging and",
+          "  deployment, peripheral setup, inventory tracking in Snipe-IT, and GDPR-compliant",
+          "  decommissioning.",
+          "- Resolve the majority of L2/L3 issues without escalation in Zendesk; document solutions",
+          "  and maintain the knowledge base.",
+          "- Led migration from Jira Service Management to Zendesk - mapped ticket categories and",
+          "  workflows, migrated knowledge base content, and retrained users on the new platform.",
+          "",
+          "IT Inventory Specialist (IT Support / Asset Management) - Marubeni Corporation (TPH)",
+          "Miami, FL - On-site - Feb 2025 - Aug 2025",
+          "- Front-line IT support across warehouse and office environments - workstations, network",
+          "  connectivity, and Zebra barcode scanners and label printers.",
+          "- Supported NetSuite ERP users, resolving access, data-entry, and hardware-integration",
+          "  issues between NetSuite and scanning equipment.",
+          "- Managed IT asset inventory tracking, auditing, and reconciliation, reducing discrepancies",
+          "  between physical stock and system records.",
+          "- Handled hardware lifecycle on site: imaging, deployment, repairs, and upgrades.",
+          "",
+          "PROJECTS - github.com/polybian",
+          "Hands-on infrastructure implementations mirroring deployments administered professionally",
+          "at Kime Capital and Marubeni: WireGuard VPN, Entra ID lifecycle + MFA, Intune endpoint",
+          "lifecycle, ITSM knowledge base (Zendesk), Snipe-IT asset inventory, Graylog log analysis,",
+          "plus network infrastructure (VLANs/DNS/DHCP/firewall), Active Directory PowerShell",
+          "automation, Wazuh SIEM, a Python port scanner (34/34 tests), Azure hybrid networking and",
+          "administration, Docker for IT operations, and Terraform + Ansible IaC.",
+          "Quantum computing (Qiskit, validated on simulators): BB84 QKD with eavesdropper detection,",
+          "Shor's factoring from scratch, core quantum circuits, VQE for H2, noise analysis, and",
+          "oracle algorithms.",
+          "",
+          "TECHNICAL SKILLS",
+          "Networking: DNS, DHCP, VPN (WireGuard), firewall rules, Cisco Meraki, Graylog, remote",
+          "  network diagnostics",
+          "Identity & Directory: Entra ID, Active Directory, user lifecycle, permissions and group",
+          "  management, MFA",
+          "Microsoft 365: Exchange Online, Teams, SharePoint, Intune",
+          "Endpoints: Windows 10/11, imaging and deployment, configuration profiles, peripherals,",
+          "  printers",
+          "ITSM & Documentation: Zendesk, Jira Service Management, Snipe-IT, NetSuite, SOP and",
+          "  knowledge base authoring",
+          "Languages: English and Spanish - native proficiency",
+          "",
+          "EDUCATION & CERTIFICATIONS",
+          "Bachelor of Laws (incomplete) - Universidad Catolica Andres Bello, Caracas, Venezuela,",
+          "  2017-2021",
+          "IBM Data Analytics Professional Certificate"
+        ].join("\n");
+
+        document.getElementById("btnResume").addEventListener("click", function () {
+          var blob = new Blob([RESUME_TXT], { type: "text/plain;charset=utf-8" });
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement("a");
+          a.href = url; a.download = "RM-Guardia-Resume.txt";
+          document.body.appendChild(a); a.click();
+          document.body.removeChild(a);
+          setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+        });
+      })();
+    </script>
+  </body>
+</html>
